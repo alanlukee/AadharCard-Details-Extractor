@@ -11,28 +11,30 @@ import base64
 
 ocr = PaddleOCR(lang = 'en')
 
-def extract_aadhar_info(confidence_threshold,img_path):
-        name_num = []
-        result = ocr.ocr(img_path)
-        extracted_numbers = [] 
-        for res in result:
-            for line in res:
-                text = line[1][0]
-                confidence = line[1][1]
-                
-                matches = re.findall(r'\b(\d{4}\s?\d{4}\s?\d{4}|\d{8}\s?\d{4}|\d{4}\s?\d{8}|\d{12})\b', text)
-                if matches:
-                    extracted_numbers.extend(matches)
-        
-        
-        result = ocr.ocr(img_path)
-        extracted_names = [res[i][1][0] for i in range(0, len(result[0]), 1) for res in result if res[i][1][1] >= confidence_threshold]
-        
-        
-        if len(extracted_names) >= 2:
-            name_num.append({"Name": extracted_names[1], "Number": extracted_numbers[-1]})
 
-        return name_num
+def extract_aadhar_info(confidence_threshold,img_path):
+    name_num = []  
+    
+    print("Path: ", img_path)
+    result = ocr.ocr(img_path)
+    extracted_numbers = [] 
+    for res in result:
+        for line in res:
+            text = line[1][0]
+            #print(text)
+            if not text.startswith("VID"or "vid" or "VID:" or "vid:" or "VID :" or "vid :"):
+                matches = re.findall(r'\b(\d{4}\s?\d{4}\s?\d{4}|\d{8}\s?\d{4}|\d{4}\s?\d{8}|\d{12})\b', text)
+            #matches = re.findall(r'\b(?:\d{4}\s?\d{4}\s?\d{4}|\d{8}\s?\d{4}|\d{4}\s?\d{8}|\d{12})\b', text)
+            #matches = re.findall(r'\b(?:\d{4}\s\d{4}\s\d{4}|\d{4}\s\d{8}|\d{12})\b', text)
+            if matches:
+                extracted_numbers.extend(matches)
+    result = ocr.ocr(img_path)
+    extracted_names = [res[i][1][0] for i in range(0, len(result[0]), 1) for res in result if res[i][1][1] >= confidence_threshold]
+    if len(extracted_names) >= 2:
+        name_num.append({"Name": extracted_names[1], "Number": extracted_numbers[-1]})
+    
+    return name_num
+
 
 
 st.title('Aadhar Name & Number Recognition')
