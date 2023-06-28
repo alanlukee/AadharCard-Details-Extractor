@@ -13,8 +13,8 @@ for the GUI.
 3. If you want the code, open the ipynb file and click on the hyperlink provided to go to the cell with the coressponding function code.
 
 > Note: Ensure that the python version is >=3.9 and <=3.10.12 . Also ensure that the images are properly taken such that the Government of India heading (in Aadhaar cards) is the first sentence visible.
-> Make sure that the image must be upright and should not be roted to the left or right.
-> Ensure that there are no background text in the image (the image should only contain the details of the aadhar card you want to scan)
+> Make sure that the image must be upright and should not be rotated to the left or right.
+> Ensure that there are no background text in the image (the image should only contain the details of the aadhar card you want to scan).
 
 ### Screenshots:
 
