@@ -116,7 +116,7 @@ else:
 df = pd.DataFrame.from_dict(final_list,orient='index',columns=['Name','Aadhaar Number'])
 csv = df.to_csv(index=False)
 b64 = base64.b64encode(csv.encode()).decode()
-filename = "Aadhaar.csv"
+filename = "output.csv"
 button_label = "Download Data as CSV"
 download_link = f'<a href="data:file/csv;base64,{b64}" download="{filename}">{button_label}</a>'
 st.download_button(

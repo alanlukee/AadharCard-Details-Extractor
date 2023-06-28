@@ -9,7 +9,10 @@ This repository provides a program that can read an Aadhaar card and provide the
 1. Install the following packages: `pandas`, `numpy`, `Pillow ( For Python Image Library (PIL) )`, `streamlit`, `paddlepaddle`, `paddleocr`.
 2. Change directory to the streamlit folder and run the command
    `streamlit run app.py`
-    to run the app on a browser
+for the GUI.
+3. If you want the code, open the ipynb file and click on the hyperlink provided to go to the cell with the coressponding function code.
+
+> Note: Ensure that the python version is >=3.9 and <=3.10.12 . Also ensure that the images are properly taken such that the Government of India heading (in Aadhaar cards) is the first sentence visible.
 
 ### Screenshots:
 
